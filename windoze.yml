@@ -10,7 +10,7 @@
       "platform": "linux",
       "logo": "https://via.placeholder.com/150",
       "repository": {
-        "stackfile": "version: '3.9'\nservices:\n  windows:\n    image: dockurr/windows\n    container_name: ${CONTAINER_NAME}\n    environment:\n      VERSION: \"${VERSION}\"\n      DISK_SIZE: \"${DISK_SIZE}\"\n      RAM_SIZE: \"${RAM_SIZE}\"\n      CPU_CORES: \"${CPU_CORES}\"\n      USERNAME: \"${USERNAME}\"\n      PASSWORD: \"${PASSWORD}\"\n    devices:\n      - /dev/kvm\n    cap_add:\n      - NET_ADMIN\n    ports:\n      - \"${PORT}:8006\"\n      - \"${RDP_PORT}:3389/tcp\"\n      - \"${RDP_PORT}:3389/udp\"\n    stop_grace_period: 2m\n    networks:\n      macvlan_network:\n        ipv4_address: \"${IPV4_ADDRESS}\"\nnetworks:\n  macvlan_network:\n    external: true"
+        "stackfile": "version: '3.9'\nservices:\n  windows:\n    image: dockurr/windows\n    container_name: ${CONTAINER_NAME}\n    environment:\n      VERSION: \"${VERSION}\"\n      DISK_SIZE: \"${DISK_SIZE}\"\n      RAM_SIZE: \"${RAM_SIZE}\"\n      CPU_CORES: \"${CPU_CORES}\"\n      USERNAME: \"${USERNAME}\"\n      PASSWORD: \"${PASSWORD}\"\n    devices:\n      - /dev/kvm\n    cap_add:\n      - NET_ADMIN\n    ports:\n      - \"${PORT}:8006\"\n      - \"${RDP_PORT}:3389/tcp\"\n      - \"${RDP_PORT}:3389/udp\"\n    stop_grace_period: 2m"
       },
       "env": [
         {
