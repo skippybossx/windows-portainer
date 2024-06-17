@@ -66,12 +66,6 @@
           "label": "RDP Port",
           "default": "3389",
           "description": "Port for RDP access"
-        },
-        {
-          "name": "IPV4_ADDRESS",
-          "label": "IPv4 Address",
-          "default": "10.0.0.100",
-          "description": "Static IPv4 address for the container"
         }
       ]
     }
