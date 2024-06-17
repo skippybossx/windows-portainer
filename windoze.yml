@@ -1,115 +1,79 @@
-[
-  {
-    "type": 1,
-    "title": "Windows Container",
-    "description": "Template to deploy a Windows container with specified settings.",
-    "note": "Please provide the necessary details.",
-    "categories": ["Operating System"],
-    "platform": "linux",
-    "logo": "https://via.placeholder.com/150",
-    "repository": {
-      "url": "https://your-repository-url.com"
-    },
-    "env": [
-      {
-        "name": "CONTAINER_NAME",
-        "label": "Container Name",
-        "default": "win_container",
-        "description": "Name of the container"
+{
+  "version": "2",
+  "templates": [
+    {
+      "type": 1,
+      "title": "Windows Container",
+      "description": "Template to deploy a Windows container with specified settings.",
+      "note": "Please provide the necessary details.",
+      "categories": ["Operating System"],
+      "platform": "linux",
+      "logo": "https://via.placeholder.com/150",
+      "repository": {
+        "stackfile": "version: '3.9'\nservices:\n  windows:\n    image: dockurr/windows\n    container_name: ${CONTAINER_NAME}\n    environment:\n      VERSION: \"${VERSION}\"\n      DISK_SIZE: \"${DISK_SIZE}\"\n      RAM_SIZE: \"${RAM_SIZE}\"\n      CPU_CORES: \"${CPU_CORES}\"\n      USERNAME: \"${USERNAME}\"\n      PASSWORD: \"${PASSWORD}\"\n    devices:\n      - /dev/kvm\n    cap_add:\n      - NET_ADMIN\n    ports:\n      - \"${PORT}:8006\"\n      - \"${RDP_PORT}:3389/tcp\"\n      - \"${RDP_PORT}:3389/udp\"\n    stop_grace_period: 2m\n    networks:\n      macvlan_network:\n        ipv4_address: \"${IPV4_ADDRESS}\"\nnetworks:\n  macvlan_network:\n    external: true"
       },
-      {
-        "name": "VERSION",
-        "label": "Windows Version",
-        "default": "2022",
-        "description": "Version of the Windows OS"
-      },
-      {
-        "name": "DISK_SIZE",
-        "label": "Disk Size",
-        "default": "60G",
-        "description": "Size of the disk"
-      },
-      {
-        "name": "RAM_SIZE",
-        "label": "RAM Size",
-        "default": "8G",
-        "description": "Size of the RAM"
-      },
-      {
-        "name": "CPU_CORES",
-        "label": "CPU Cores",
-        "default": "4",
-        "description": "Number of CPU cores"
-      },
-      {
-        "name": "USERNAME",
-        "label": "Username",
-        "default": "admin",
-        "description": "Username for the Windows container"
-      },
-      {
-        "name": "PASSWORD",
-        "label": "Password",
-        "default": "admin1234",
-        "description": "Password for the Windows container"
-      },
-      {
-        "name": "PORT",
-        "label": "Port",
-        "default": "8006",
-        "description": "Port to access the service"
-      },
-      {
-        "name": "RDP_PORT",
-        "label": "RDP Port",
-        "default": "3389",
-        "description": "Port for RDP access"
-      },
-      {
-        "name": "IPV4_ADDRESS",
-        "label": "IPv4 Address",
-        "default": "10.0.0.100",
-        "description": "Static IPv4 address for the container"
-      }
-    ],
-    "deploy": {
-      "version": "3.9",
-      "services": {
-        "windows": {
-          "image": "dockurr/windows",
-          "container_name": "${CONTAINER_NAME}",
-          "environment": [
-            "VERSION=${VERSION}",
-            "DISK_SIZE=${DISK_SIZE}",
-            "RAM_SIZE=${RAM_SIZE}",
-            "CPU_CORES=${CPU_CORES}",
-            "USERNAME=${USERNAME}",
-            "PASSWORD=${PASSWORD}"
-          ],
-          "devices": [
-            "/dev/kvm"
-          ],
-          "cap_add": [
-            "NET_ADMIN"
-          ],
-          "ports": [
-            "${PORT}:8006",
-            "${RDP_PORT}:3389/tcp",
-            "${RDP_PORT}:3389/udp"
-          ],
-          "stop_grace_period": "2m",
-          "networks": {
-            "macvlan_network": {
-              "ipv4_address": "${IPV4_ADDRESS}"
-            }
-          }
+      "env": [
+        {
+          "name": "CONTAINER_NAME",
+          "label": "Container Name",
+          "default": "win_container",
+          "description": "Name of the container"
+        },
+        {
+          "name": "VERSION",
+          "label": "Windows Version",
+          "default": "2022",
+          "description": "Version of the Windows OS"
+        },
+        {
+          "name": "DISK_SIZE",
+          "label": "Disk Size",
+          "default": "60G",
+          "description": "Size of the disk"
+        },
+        {
+          "name": "RAM_SIZE",
+          "label": "RAM Size",
+          "default": "8G",
+          "description": "Size of the RAM"
+        },
+        {
+          "name": "CPU_CORES",
+          "label": "CPU Cores",
+          "default": "4",
+          "description": "Number of CPU cores"
+        },
+        {
+          "name": "USERNAME",
+          "label": "Username",
+          "default": "admin",
+          "description": "Username for the Windows container"
+        },
+        {
+          "name": "PASSWORD",
+          "label": "Password",
+          "default": "admin1234",
+          "description": "Password for the Windows container"
+        },
+        {
+          "name": "PORT",
+          "label": "Port",
+          "default": "8006",
+          "description": "Port to access the service"
+        },
+        {
+          "name": "RDP_PORT",
+          "label": "RDP Port",
+          "default": "3389",
+          "description": "Port for RDP access"
+        },
+        {
+          "name": "IPV4_ADDRESS",
+          "label": "IPv4 Address",
+          "default": "10.0.0.100",
+          "description": "Static IPv4 address for the container"
         }
-      },
-      "networks": {
-        "macvlan_network": {
-          "external": true
-        }
-      }
+      ]
     }
-  }
-]
+  ]
+}
